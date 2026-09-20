@@ -1,0 +1,155 @@
+/* ==========================================================================
+   NextGenz Constructions — Animation Utilities & Keyframes
+   These pair with GSAP-driven JS classes (added/removed via ScrollTrigger)
+   ========================================================================== */
+
+/* ---- Base states for GSAP-controlled reveals ----
+   GSAP sets initial state via .fromTo() in JS, but these classes provide
+   a CSS fallback / no-JS baseline so content isn't invisible if a script fails. */
+
+.reveal-up {
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+.reveal-fade {
+  opacity: 0;
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+}
+
+.reveal-mask {
+  overflow: hidden;
+}
+
+.reveal-mask > * {
+  transform: translateY(105%);
+}
+
+.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Stagger children (used with GSAP stagger targeting these) ---- */
+
+.stagger-item {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* ---- Image reveal wrapper: clip-path sweep ---- */
+
+.img-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.img-reveal img {
+  transform: scale(1.15);
+  transition: transform 1.6s var(--ease-cinematic);
+}
+
+.img-reveal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-bronze-500);
+  transform-origin: left;
+}
+
+/* GSAP animates .img-reveal::after via a pseudo-proxy handled in JS,
+   or alternatively use a sibling div.img-reveal__sweep — see ScrollReveal.jsx */
+
+.img-reveal__sweep {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-bronze-500);
+  transform-origin: left;
+  z-index: 2;
+}
+
+/* ---- Hover: image scale on card hover (parent must have .hover-zoom) ---- */
+
+.hover-zoom {
+  overflow: hidden;
+}
+
+.hover-zoom img {
+  transition: transform var(--duration-slow) var(--ease-cinematic);
+}
+
+.hover-zoom:hover img {
+  transform: scale(1.06);
+}
+
+/* ---- Scroll progress bar ---- */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background-color: var(--color-accent);
+  transform-origin: left;
+  transform: scaleX(0);
+  z-index: 999;
+  pointer-events: none;
+}
+
+/* ---- Marquee / horizontal drift (used sparingly, e.g. client strip) ---- */
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 32s linear infinite;
+}
+
+/* ---- Loader / entrance curtain (one-time page load moment) ---- */
+
+.load-curtain {
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-navy-950);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.load-curtain__label {
+  font-family: var(--font-display);
+  font-weight: var(--fw-black);
+  color: var(--color-warm-white);
+  font-size: var(--fs-body-lg);
+  letter-spacing: var(--tracking-wide);
+}
+
+/* ---- Respect reduced motion at the utility level too ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up,
+  .reveal-fade,
+  .reveal-scale,
+  .stagger-item {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .reveal-mask > * {
+    transform: none !important;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+}

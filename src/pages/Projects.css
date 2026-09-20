@@ -1,0 +1,251 @@
+.projects-sample-note {
+  font-size: var(--fs-body-sm);
+  color: var(--color-stone-500);
+  font-style: italic;
+  margin-top: -var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.projects-interior__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+.projects-interior__item {
+  padding: var(--space-6) var(--space-4);
+  text-align: center;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-light);
+}
+
+.projects-interior__item h4 {
+  color: var(--color-text-primary-light);
+}
+
+@media (max-width: 900px) {
+  .projects-interior__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .projects-interior__grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================
+   PROJECT GALLERY BACKGROUND
+========================================= */
+
+.projects-gallery-section {
+  position: relative;
+
+  background-image:
+    linear-gradient(
+      rgba(10, 18, 29, 0.84),
+      rgba(10, 18, 29, 0.84)
+    ),
+    url("/assets/our_projects_bg.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  isolation: isolate;
+}
+
+.projects-gallery-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================
+   INTERIOR DESIGN CATEGORIES
+========================================= */
+
+.projects-interior__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+
+  margin-top: var(--space-8);
+}
+
+.projects-interior__item {
+  position: relative;
+
+  min-height: 150px;
+  padding: var(--space-6);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  background: linear-gradient(
+    145deg,
+    #172536,
+    #0d1726
+  );
+
+  border: 1px solid rgba(196, 148, 87, 0.28);
+  border-radius: 14px;
+
+  box-shadow:
+    0 8px 24px rgba(10, 15, 25, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease;
+}
+
+/* Decorative bronze accent */
+
+.projects-interior__item::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 3px;
+
+  background: var(--color-bronze-400);
+
+  transform: scaleX(0);
+  transform-origin: left;
+
+  transition: transform 0.35s ease;
+}
+
+/* Subtle background glow */
+
+.projects-interior__item::after {
+  content: "";
+
+  position: absolute;
+  right: -45px;
+  bottom: -45px;
+
+  width: 120px;
+  height: 120px;
+
+  border-radius: 50%;
+
+  background: rgba(196, 148, 87, 0.08);
+
+  pointer-events: none;
+}
+
+.projects-interior__item h4 {
+  position: relative;
+  z-index: 1;
+
+  margin: 0;
+
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.8vw, 1.65rem);
+  font-weight: var(--fw-bold);
+
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+
+  color: var(--color-warm-white);
+
+  transition:
+    color 0.35s ease,
+    transform 0.35s ease;
+}
+
+/* Hover effect */
+
+.projects-interior__item:hover {
+  transform: translateY(-8px);
+
+  border-color: var(--color-bronze-400);
+
+  background: linear-gradient(
+    145deg,
+    #213247,
+    #111e30
+  );
+
+  box-shadow:
+    0 16px 35px rgba(10, 15, 25, 0.2),
+    0 0 0 1px rgba(196, 148, 87, 0.08);
+}
+
+.projects-interior__item:hover::before {
+  transform: scaleX(1);
+}
+
+.projects-interior__item:hover h4 {
+  color: var(--color-bronze-400);
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+  .projects-interior__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .projects-interior__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .projects-interior__item {
+    min-height: 115px;
+    padding: var(--space-5);
+  }
+
+  .projects-interior__item h4 {
+    font-size: 1.35rem;
+  }
+}
+
+/* =========================================
+   INTERIOR SECTION HEADING
+========================================= */
+
+.projects-interior .section-heading__eyebrow {
+  font-size: 0.95rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-bronze-400);
+}
+
+.projects-interior .section-heading__title {
+  max-width: 800px;
+
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  font-weight: var(--fw-bold);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+
+  color: var(--color-navy-950);
+}
+
+.projects-interior .section-heading__subtitle {
+  max-width: 680px;
+
+  margin-top: var(--space-4);
+
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  line-height: 1.7;
+
+  color: var(--color-stone-600);
+}

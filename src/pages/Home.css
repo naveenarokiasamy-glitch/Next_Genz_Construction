@@ -1,0 +1,99 @@
+.home-intro__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-7);
+  align-items: start;
+}
+
+.home-intro__grid h2 {
+  color: var(--color-text-primary-light);
+}
+
+.home-intro__grid p {
+  font-size: var(--fs-body-lg);
+  color: var(--color-text-muted-light);
+  max-width: 52ch;
+}
+
+.home-services__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.home-projects__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+.home-projects__more {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-7);
+}
+
+.home-why__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+}
+
+.home-why__item svg {
+  color: var(--color-bronze-400);
+  margin-bottom: var(--space-3);
+}
+
+.home-why__item h4 {
+  color: var(--color-warm-white);
+  margin-bottom: var(--space-2);
+}
+
+.home-why__item p {
+  color: var(--color-stone-500);
+  font-size: var(--fs-body-sm);
+}
+
+@media (max-width: 1024px) {
+  .home-services__grid,
+  .home-projects__grid { grid-template-columns: repeat(2, 1fr); }
+  .home-why__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .home-intro__grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .home-services__grid,
+  .home-projects__grid,
+  .home-why__grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================
+   WHAT WE DO / SERVICES SECTION
+========================================= */
+
+.home-services {
+  position: relative;
+
+  background-image:
+    linear-gradient(
+      rgba(10, 18, 29, 0.82),
+      rgba(10, 18, 29, 0.82)
+    ),
+    url("/assets/what-we-do.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  isolation: isolate;
+}
+
+/* Keep content above the background */
+
+.home-services .container {
+  position: relative;
+  z-index: 1;
+}
