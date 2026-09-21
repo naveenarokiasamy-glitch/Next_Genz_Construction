@@ -76,3 +76,32 @@
     grid-template-columns: 1fr;
   }
 }
+
+
+.contact-map {
+  width: 100%;
+  margin-top: var(--space-6);
+  overflow: hidden;
+  border: 1px solid rgba(196, 148, 87, 0.28);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-navy-900);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-map iframe {
+  display: block;
+  width: 100%;
+  min-height: 350px;
+  border: 0;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .contact-map {
+    margin-top: var(--space-5);
+  }
+
+  .contact-map iframe {
+    min-height: 280px;
+  }
+}
