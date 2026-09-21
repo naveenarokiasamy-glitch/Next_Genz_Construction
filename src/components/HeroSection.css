@@ -9,7 +9,9 @@
 
 /* Hero heights */
 .hero--full {
-  min-height: min(760px, 92vh);
+  /* Keep the cinematic desktop proportion without tying the hero to one height. */
+  min-height: min(47.5rem, 92vh);
+  min-height: min(47.5rem, 92dvh);
   padding-top: var(--nav-height);
 }
 
@@ -30,6 +32,15 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+/*
+  The home image is intentionally framed around the house on wide screens.
+  Smaller breakpoints progressively move the focal point right so the house
+  remains present rather than being cropped out of portrait viewports.
+*/
+.hero--full .hero__bg img {
+  object-position: 54% center;
 }
 
 /* No-image background */
@@ -60,6 +71,7 @@
   z-index: 2;
   width: 100%;
   max-width: 760px;
+  min-width: 0;
   padding-block: clamp(3.5rem, 6vw, 5rem);
   color: var(--color-warm-white);
 }
@@ -163,7 +175,7 @@
 /* Tablet */
 @media (max-width: 1024px) {
   .hero--full {
-    min-height: 680px;
+    min-height: min(42.5rem, 92dvh);
   }
 
   .hero__content {
@@ -173,12 +185,16 @@
   .hero__title {
     font-size: clamp(2.4rem, 5vw, 4rem);
   }
+
+  .hero--full .hero__bg img {
+    object-position: 60% center;
+  }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
   .hero--full {
-    min-height: 650px;
+    min-height: 100svh;
     padding-top: var(--nav-height);
   }
 
@@ -187,7 +203,7 @@
   }
 
   .hero__content {
-    padding-block: 3.5rem;
+    padding-block: clamp(3.5rem, 8svh, 5.5rem);
   }
 
   .hero__title,
@@ -206,15 +222,35 @@
     margin-top: var(--space-4);
   }
 
+  .hero--full .hero__bg img {
+    object-position: 68% center;
+  }
+
+  .hero--full .hero__scrim {
+    background:
+      linear-gradient(90deg, rgba(10, 18, 29, 0.66) 0%, rgba(10, 18, 29, 0.38) 100%),
+      linear-gradient(180deg, rgba(10, 18, 29, 0.48) 0%, rgba(10, 18, 29, 0.28) 45%, rgba(10, 18, 29, 0.76) 100%);
+  }
+
   .hero__scroll-cue {
     display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero--full .hero__bg img {
+    object-position: 73% center;
+  }
+
+  .hero__actions .btn {
+    flex: 1 1 11.5rem;
   }
 }
 
 /* Small mobile */
 @media (max-width: 480px) {
   .hero--full {
-    min-height: 600px;
+    min-height: 100svh;
   }
 
   .hero--compact {
@@ -227,7 +263,7 @@
 
   .hero__title,
   .hero--compact .hero__title {
-    font-size: clamp(2rem, 9vw, 2.75rem);
+    font-size: clamp(1.95rem, 9vw, 2.75rem);
   }
 
   .hero__actions {
@@ -235,8 +271,27 @@
     gap: 0.75rem;
   }
 
+  .hero--full .hero__bg img {
+    object-position: 77% center;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero__content {
+    padding-block: clamp(3rem, 7svh, 4rem);
+  }
+
+  .hero__title,
+  .hero--compact .hero__title {
+    font-size: clamp(1.85rem, 9vw, 2.2rem);
+  }
+
   .hero__actions .btn {
-    width: 100%;
+    flex-basis: 100%;
+  }
+
+  .hero--full .hero__bg img {
+    object-position: 80% center;
   }
 }
 

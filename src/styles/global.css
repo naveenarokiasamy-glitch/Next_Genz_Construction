@@ -25,9 +25,7 @@ html {
 
 body {
   width: 100%;
-  min-width: 320px;
   min-height: 100vh;
-  overflow-x: hidden;
 
   font-family: var(--font-body);
   font-size: var(--fs-body-md);
@@ -40,7 +38,7 @@ body {
 #root {
   width: 100%;
   min-height: 100vh;
-  overflow-x: clip;
+  min-width: 0;
 }
 
 /* ==========================================================================
@@ -129,6 +127,7 @@ strong {
 .container {
   width: 100%;
   max-width: var(--container-max);
+  min-width: 0;
   margin-inline: auto;
   padding-inline: var(--container-padding-x);
 }
