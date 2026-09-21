@@ -32,9 +32,7 @@
   font-weight: var(--fw-medium);
   line-height: 1.4;
 
-  max-width: min(15rem, calc(100vw - 6rem));
-  overflow-wrap: anywhere;
-  text-align: right;
+  white-space: nowrap;
 
   animation:
     chatbot-welcome-enter 0.8s
@@ -157,8 +155,8 @@
   position: absolute;
   bottom: 72px;
   right: 0;
-  width: min(360px, calc(100vw - (var(--space-4) * 2)));
-  max-height: min(70dvh, calc(100svh - 8rem));
+  width: min(360px, 88vw);
+  max-height: 70vh;
   display: flex;
   flex-direction: column;
   background-color: var(--color-surface-dark);
@@ -300,23 +298,9 @@
 }
 
 @media (max-width: 480px) {
-  .chatbot {
-    right: 1rem;
-    bottom: 1rem;
-  }
-
-  .chatbot__toggle {
-    width: 52px;
-    height: 52px;
-  }
-
-  .chatbot__panel {
-    bottom: 64px;
-  }
-
   .chatbot__welcome {
-    bottom: 67px;
-    max-width: min(13.5rem, calc(100vw - 5.5rem));
+    right: -4px;
+    max-width: 210px;
 
     padding: 0.65rem 0.8rem;
     font-size: 0.75rem;
