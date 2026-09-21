@@ -1,45 +1,95 @@
+/* ==========================================================================
+   NextGenz Constructions — Home Page Styles
+   Responsive Premium Layout
+   ========================================================================== */
+
+/* ==========================================================================
+   INTRODUCTION SECTION
+   ========================================================================== */
+
 .home-intro__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-7);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
   align-items: start;
 }
 
 .home-intro__grid h2 {
   color: var(--color-text-primary-light);
+  max-width: 18ch;
 }
 
 .home-intro__grid p {
   font-size: var(--fs-body-lg);
+  line-height: 1.7;
   color: var(--color-text-muted-light);
   max-width: 52ch;
 }
 
+/* ==========================================================================
+   SERVICES SECTION
+   ========================================================================== */
+
+.home-services {
+  position: relative;
+  isolation: isolate;
+
+  background-image:
+    linear-gradient(
+      rgba(10, 18, 29, 0.84),
+      rgba(10, 18, 29, 0.84)
+    ),
+    url("/assets/what-we-do.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.home-services .container {
+  position: relative;
+  z-index: 1;
+}
+
 .home-services__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
 }
+
+/* ==========================================================================
+   FEATURED PROJECTS
+   ========================================================================== */
 
 .home-projects__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-5);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2rem);
 }
 
 .home-projects__more {
   display: flex;
   justify-content: center;
-  margin-top: var(--space-7);
+  margin-top: clamp(2rem, 4vw, 3.5rem);
 }
+
+/* ==========================================================================
+   WHY CHOOSE US
+   ========================================================================== */
 
 .home-why__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-5);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.home-why__item {
+  min-width: 0;
 }
 
 .home-why__item svg {
+  width: 28px;
+  height: 28px;
   color: var(--color-bronze-400);
   margin-bottom: var(--space-3);
 }
@@ -47,53 +97,138 @@
 .home-why__item h4 {
   color: var(--color-warm-white);
   margin-bottom: var(--space-2);
+  font-size: var(--fs-display-sm);
 }
 
 .home-why__item p {
   color: var(--color-stone-500);
   font-size: var(--fs-body-sm);
+  line-height: 1.65;
 }
+
+/* ==========================================================================
+   LARGE DESKTOP
+   ========================================================================== */
+
+@media (min-width: 1440px) {
+  .home-intro__grid {
+    gap: 5rem;
+  }
+
+  .home-services__grid,
+  .home-projects__grid {
+    gap: 2rem;
+  }
+}
+
+/* ==========================================================================
+   TABLET — 1024px
+   ========================================================================== */
 
 @media (max-width: 1024px) {
   .home-services__grid,
-  .home-projects__grid { grid-template-columns: repeat(2, 1fr); }
-  .home-why__grid { grid-template-columns: repeat(2, 1fr); }
+  .home-projects__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-why__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 2.5rem;
+  }
+
+  .home-intro__grid {
+    gap: 2rem;
+  }
 }
 
+/* ==========================================================================
+   TABLET / LARGE MOBILE — 768px
+   ========================================================================== */
+
 @media (max-width: 768px) {
-  .home-intro__grid { grid-template-columns: 1fr; }
+  .home-intro__grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .home-intro__grid h2 {
+    max-width: 100%;
+  }
+
+  .home-intro__grid p {
+    max-width: 100%;
+    font-size: 1rem;
+  }
+
+  .home-services__grid,
+  .home-projects__grid {
+    gap: 1rem;
+  }
+
+  .home-why__grid {
+    gap: 2rem 1.25rem;
+  }
+
+  .home-why__item svg {
+    width: 25px;
+    height: 25px;
+  }
 }
+
+/* ==========================================================================
+   MOBILE — 640px
+   ========================================================================== */
 
 @media (max-width: 640px) {
   .home-services__grid,
   .home-projects__grid,
-  .home-why__grid { grid-template-columns: 1fr; }
+  .home-why__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-services__grid,
+  .home-projects__grid {
+    gap: 1rem;
+  }
+
+  .home-why__grid {
+    gap: 2rem;
+  }
+
+  .home-why__item h4 {
+    font-size: 1.25rem;
+  }
 }
 
-/* =========================================
-   WHAT WE DO / SERVICES SECTION
-========================================= */
+/* ==========================================================================
+   SMALL MOBILE — 480px
+   ========================================================================== */
 
-.home-services {
-  position: relative;
+@media (max-width: 480px) {
+  .home-intro__grid {
+    gap: 1.25rem;
+  }
 
-  background-image:
-    linear-gradient(
-      rgba(10, 18, 29, 0.82),
-      rgba(10, 18, 29, 0.82)
-    ),
-    url("/assets/what-we-do.jpg");
+  .home-intro__grid p {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+  }
 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  .home-projects__more {
+    margin-top: 2rem;
+  }
 
-  isolation: isolate;
-}
+  .home-why__item svg {
+    width: 23px;
+    height: 23px;
+    margin-bottom: 0.75rem;
+  }
 
-/* Keep content above the background */
+  .home-why__item h4 {
+    font-size: 1.15rem;
+  }
 
-.home-services .container {
-  position: relative;
-  z-index: 1;
+  .home-why__item p {
+    font-size: 0.875rem;
+  }
 }
